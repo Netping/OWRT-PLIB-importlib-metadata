@@ -35,6 +35,9 @@ else
 	mkdir -p $(INSTALL_DIR)${MODULE_FILES_DIR}
 endif
 	for f in $(MODULE_FILES); do cp -r $${f} $(INSTALL_DIR)$(MODULE_FILES_DIR); done
+ifeq ($(origin INSTALL_DIR),command line)
+	cp -r $(TESTS_SRC_DIR) $(INSTALL_DIR)$(MODULE_FILES_DIR)
+endif
 
 clean:
 ifeq ($(origin INSTALL_DIR),command line)
